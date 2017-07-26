@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import pl.training.backend.common.model.Mapper;
+import pl.training.backend.model.MeetingService;
 
 @Configuration
 public class CommonBeans {
@@ -15,6 +16,8 @@ public class CommonBeans {
     public Mapper mapper(MessageSource messageSource) {
         return new Mapper(messageSource);
     }
+
+
 
     @Bean
     public MessageSource messageSource() {

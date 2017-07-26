@@ -19,5 +19,8 @@ public class UserDto {
     private String password;
     @JsonProperty(access = Access.READ_ONLY)
     private Set<AuthorityDto> authorities;
+    private String firstName;
+    private String lastName;
+    private String email;
 
 }
