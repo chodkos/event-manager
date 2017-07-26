@@ -1,5 +1,6 @@
 package pl.training.backend.model;
 
+import lombok.Data;
 import pl.training.backend.security.entity.User;
 
 import javax.persistence.Column;
@@ -14,6 +15,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "meetings")
+@Data
 public class Meeting extends AbstractEntity {
 
     @Column(nullable = false)
@@ -37,6 +39,10 @@ public class Meeting extends AbstractEntity {
         this.organizer = organizer;*/
       //  this.invitedUsers = invitedUsers;
       //  this.acceptedUsers = acceptedUsers;
+    }
+
+    public Meeting(){
+
     }
 
    /* public void inviteUser(User user){

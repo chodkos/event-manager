@@ -17,8 +17,8 @@ public class MeetingDto {
     private String name;
     @ApiModelProperty(required = true)
     private String address;
-    @ApiModelProperty(required = true)
-    private Date date;
+  /*  @ApiModelProperty(required = true)
+    private Date date;*/
     @ApiModelProperty(required = true)
     private String description;
 

@@ -1,5 +1,6 @@
 package pl.training.backend.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,9 +17,13 @@ public class MeetingService {
 
     private MeetingRepository meetingRepository;
 
-
+    @Autowired
     public MeetingService(MeetingRepository meetingRepository) {
         this.meetingRepository = meetingRepository;
+    }
+
+    public Iterable<Meeting> findAllHotels() {
+        return meetingRepository.findAll();
     }
 
     public void addMeeting(Meeting meeting){

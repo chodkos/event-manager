@@ -5,4 +5,5 @@ insert into users (id, login, password, active) values (2, 'user', 'fd66aa8bbeb2
 insert into authorities (id, name) values(2, 'ROLE_USER');
 insert into users_authorities values(2,2);
 
-insert into meetings(id, name, address, description) values(1, 'spotkanie', 'ciepielewo', 'super spotkanie')
+insert into meetings(name, address, description) values('spotkanie', 'ciepielewo', 'superSpotkanie');
+insert into meetings(name, address, description) values('spotkanie2', '3ciepielewo', '4superSpotkanie');

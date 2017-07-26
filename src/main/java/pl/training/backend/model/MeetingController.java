@@ -21,7 +21,6 @@ import java.util.List;
  */
 
 @Api(description = "Meetings resource")
-@RequestMapping(value = UriBuilder.PREFIX + "/meetings")
 @RestController
 public class MeetingController {
 
@@ -29,14 +28,15 @@ public class MeetingController {
     private MeetingService meetingService;
     private UriBuilder uriBuilder = new UriBuilder();
 
-    @Autowired
+
     public MeetingController(Mapper mapper, MeetingService meetingService) {
         this.mapper = mapper;
         this.meetingService = meetingService;
     }
 
-    @ApiOperation(value = "Get meetings", response = MeetingPageDto.class)
-    @RequestMapping(method = RequestMethod.GET)
+  /*  @ApiOperation(value = "Get meetings", response = MeetingPageDto.class)
+    @RequestMapping(method = RequestMethod.GET)*/
+  @RequestMapping(value = UriBuilder.PREFIX + "/meetings")
     public MeetingPageDto getMeetings(
             @RequestParam(required = false, defaultValue = "0", name = "pageNumber") int pageNumber,
             @RequestParam(required = false, defaultValue = "10", name = "pageSize") int pageSize) {
