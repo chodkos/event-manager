@@ -3,6 +3,7 @@ import {Http, RequestOptions, URLSearchParams} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/mapTo';
 import 'rxjs/add/operator/do';
 import "rxjs/add/operator/mergeMap";
 import {Api} from '../api';
@@ -13,41 +14,58 @@ export class SecurityService {
 
   user: Observable<User>
 
-  private authorizationHeader = 'Authorization'
-  private userKey = 'user'
-  private tokenKey = 'token'
-  private tokenType = 'bearer'
-  private userSubject = new BehaviorSubject<User>(null)
+
+  events: Observable<boolean>;
+
+  private authenticationEvents = new BehaviorSubject<boolean>(false);
+
 
   constructor(private http: Http, private requestOptions: RequestOptions, private api: Api) {
-    this.user = this.userSubject.asObservable()
-    this.restoreSecurityContext()
-  }
-
-  private restoreSecurityContext() {
-    let token = sessionStorage.getItem(this.tokenKey)
-    if (token) {
-      this.setToken(token)
-    }
-    let user = sessionStorage.getItem(this.userKey)
-    if (user) {
-      this.userSubject.next(JSON.parse(user))
+    this.events = this.authenticationEvents.asObservable()
+    let token = sessionStorage.getItem('token')
+    if(token){
+      this.setAuthorizationToken(token);
+      this.authenticationEvents.next(true);
     }
   }
 
-  getUser(): User {
-    return this.userSubject.getValue()
+
+  isAuthenticated(): boolean{
+    return this.authenticationEvents.getValue();
   }
 
-  login(username: string, password: string): Observable<User> {
-    let credentials = this.prepareCredentials(username, password)
-    return this.retrieveToken(credentials)
-      .do(token => this.setToken(token))
-      .flatMap(() => this.retrieveUser())
-      .do(user => this.setUser(user))
+
+
+  login(username: string, password: string): Observable<boolean> {
+    let payload = this.preparePayload(username, password);
+    return this.http.post(this.api.oauthServer, payload)
+      .map(response => response.json())
+      .map(json => json.access_token)
+      .do(token => this.onLoginSuccess(token))
+      .mapTo(true)
   }
 
-  private prepareCredentials(username: string, password: string): URLSearchParams {
+  private onLoginSuccess(token: string) {
+    this.setAuthorizationToken(token);
+    sessionStorage.setItem('token', token);
+    this.authenticationEvents.next(true)
+  }
+
+  logout() {
+    this.removeAuthorizationHeader();
+    this.authenticationEvents.next(false)
+    sessionStorage.removeItem('token');
+  }
+
+  private removeAuthorizationHeader() {
+    this.requestOptions.headers.delete('Authorization')
+  }
+
+  private setAuthorizationToken(token: string) {
+    this.requestOptions.headers.set('Authorization', `Bearer ${token}`)
+  }
+
+  private preparePayload(username: string, password: string): URLSearchParams {
     let payload = new URLSearchParams()
     payload.set('username', username)
     payload.set('password', password)
@@ -56,36 +74,6 @@ export class SecurityService {
     return payload
   }
 
-  private retrieveToken(payload: URLSearchParams): Observable<string> {
-    return this.http.post(this.api.oauthServer, payload)
-      .map(response => response.json())
-      .map(json => json.access_token)
-  }
 
-  private setToken(token: string) {
-    sessionStorage.setItem(this.tokenKey, token)
-    this.requestOptions.headers.set(this.authorizationHeader, `${this.tokenType} ${token}`)
-  }
-
-  private retrieveUser(): Observable<User> {
-    return this.http.get(this.api.activeUser)
-      .map(response => response.json())
-      .map(json => new User(json))
-  }
-
-  private setUser(user: User) {
-    sessionStorage.setItem(this.userKey, JSON.stringify(user))
-    this.userSubject.next(user)
-  }
-
-  logout() {
-    this.removeToken()
-    this.userSubject.next(null)
-  }
-
-  private removeToken() {
-    sessionStorage.removeItem(this.tokenKey)
-    this.requestOptions.headers.delete(this.authorizationHeader)
-  }
 
 }

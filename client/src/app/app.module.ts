@@ -8,6 +8,7 @@ import {SecurityGuard} from './security/security.guard';
 import {SecurityService} from './security/security.service';
 import {routerModule} from './app.routing';
 import {MeetingModule} from "./meeting/meeting.module";
+import {UsersService} from "./users/users.service";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {MeetingModule} from "./meeting/meeting.module";
   providers: [
     Api,
     SecurityService,
-    SecurityGuard
+    SecurityGuard,
+    UsersService
   ],
   bootstrap: [AppComponent]
 })

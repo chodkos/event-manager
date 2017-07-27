@@ -1,0 +1,72 @@
+<div class="register-form">
+
+  <h2>Zarejestruj się</h2>
+
+  <form #registerForm="ngForm" novalidate="true" (ngSubmit)="registerFormMethod()">
+
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label">Login</label>
+      <div class="col-md-4">
+        <input class="input" type="text" name="login" [(ngModel)]="userProfile.login" required>
+        <span class="help-block">Type ur login here</span>
+      </div>
+    </div>
+
+    <!-- Password input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label">Password:</label>
+      <div class="col-md-4">
+        <input class="input" type="password" name="password" [(ngModel)]="userProfile.password" required>
+        <span class="help-block">Type ur password here</span>
+      </div>
+    </div>
+
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label">Name</label>
+      <div class="col-md-4">
+        <input class="input" type="text" name="name" [(ngModel)]="userProfile.userProfileDto.name" required>
+
+      </div>
+    </div>
+
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label">Surname</label>
+      <div class="col-md-4">
+        <input class="input" type="text" name="surname" [(ngModel)]="userProfile.userProfileDto.surname">
+
+      </div>
+    </div>
+
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label">Decribe yourself</label>
+      <div class="col-md-4">
+        <textarea class="input" name="description" [(ngModel)]="userProfile.userProfileDto.description"></textarea>
+        <span class="help-block">help</span>
+      </div>
+    </div>
+
+    <!-- Button -->
+    <div class="form-group">
+      <label class="col-md-4 control-label"></label>
+      <div class="col-md-4">
+        <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Register</button>
+      </div>
+    </div>
+
+    <br>
+    <div class="errorText" *ngIf="registerResult == false">Invalid input</div>
+    <br>
+
+    <!-- Button -->
+    <label class="col-md-4 control-label">If already registered</label>
+    If already registered
+    <button type="button" routerLink="../login" class="btn btn-success custom">Log in</button>
+
+
+
+  </form>
+</div>

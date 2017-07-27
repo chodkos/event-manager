@@ -1,8 +1,8 @@
-<form #loginForm="ngForm" novalidate="true" (ngSubmit)="login()">
+<form #loginForm="ngForm" novalidate="true" (ngSubmit)="loginFormMethod()">
   <div>
     <div>
       <label>Username:</label>
-      <input name="username" [(ngModel)]="username" required>
+      <input name="login" [(ngModel)]="login" required>
     </div>
     <div>
       <label>Password:</label>
@@ -16,3 +16,8 @@
 <div *ngIf="loginError">
   Invalid user or password
 </div>
+
+<br>
+<h6>Don't Have an Account?</h6>
+<button type="button" routerLink="../register" class="btn btn-danger custom">Register</button>
+<br>

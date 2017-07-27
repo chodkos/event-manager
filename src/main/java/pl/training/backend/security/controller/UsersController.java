@@ -14,6 +14,7 @@ import pl.training.backend.security.dto.UserDto;
 import pl.training.backend.security.dto.UsersPageDto;
 import pl.training.backend.security.entity.User;
 import pl.training.backend.security.service.UsersService;
+import pl.training.backend.userprofile.model.UserProfile;
 
 import java.net.URI;
 import java.util.List;
