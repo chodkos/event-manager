@@ -25,6 +25,8 @@ export class AddmeetingFormComponent implements OnInit {
     }
   }*/
 
+ meetings = []
+
   constructor(private meetingService: MeetingService, private router: Router) { }
 
   addMeeting(){
