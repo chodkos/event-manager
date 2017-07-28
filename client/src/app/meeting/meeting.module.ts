@@ -6,6 +6,7 @@ import {MeetingService} from "./meeting.service";
 import { AddmeetingFormComponent } from './addmeeting-form/addmeeting-form.component';
 import {FormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
+import { MeetingCardComponent } from './meeting-card/meeting-card.component';
 
 @NgModule({
   imports: [
@@ -16,9 +17,10 @@ import {RouterModule} from "@angular/router";
   ],
   exports: [
     MeetingListComponent,
-    AddmeetingFormComponent
+    AddmeetingFormComponent,
+    MeetingCardComponent
   ],
-  declarations: [MeetingListComponent, AddmeetingFormComponent],
+  declarations: [MeetingListComponent, AddmeetingFormComponent, MeetingCardComponent],
   providers: [MeetingService]
 })
 export class MeetingModule { }

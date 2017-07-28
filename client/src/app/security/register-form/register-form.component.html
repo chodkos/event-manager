@@ -6,8 +6,8 @@
 
     <!-- Text input-->
     <div class="form-group">
-      <label class="col-md-4 control-label">Login</label>
-      <div class="col-md-4">
+      <label class="control-label">Login</label>
+      <div class="">
         <input class="input" type="text" name="login" [(ngModel)]="userProfile.login" required>
         <span class="help-block"></span>
       </div>
@@ -16,7 +16,7 @@
     <!-- Password input-->
     <div class="form-group">
       <label class="col-md-4 control-label">Password:</label>
-      <div class="col-md-4">
+      <div class="">
         <input class="input" type="password" name="password" [(ngModel)]="userProfile.password" required>
         <span class="help-block"></span>
       </div>
@@ -25,7 +25,7 @@
     <!-- Text input-->
     <div class="form-group">
       <label class="col-md-4 control-label">Name</label>
-      <div class="col-md-4">
+      <div class="">
         <input class="input" type="text" name="name" [(ngModel)]="userProfile.userProfileDto.firstName" required> <!--name-->
       </div>
     </div>
@@ -33,25 +33,25 @@
     <!-- Text input-->
     <div class="form-group">
       <label class="col-md-4 control-label">Surname</label>
-      <div class="col-md-4">
+      <div class="">
         <input class="input" type="text" name="surname" [(ngModel)]="userProfile.userProfileDto.lastName"> <!--surname-->
 
       </div>
     </div>
 
     <!-- Text input-->
-    <div class="form-group">
+  <!--  <div class="form-group">
       <label class="col-md-4 control-label">Decribe yourself</label>
-      <div class="col-md-4">
+      <div class="">
         <textarea class="input" name="description" [(ngModel)]="userProfile.userProfileDto.description"></textarea>
         <span class="help-block"></span>
       </div>
-    </div>
+    </div>-->
 
     <!-- Button -->
     <div class="form-group">
       <label class="col-md-4 control-label"></label>
-      <div class="col-md-4">
+      <div class="">
         <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Register</button>
       </div>
     </div>
@@ -62,8 +62,7 @@
 
     <!-- Button -->
     <label class="col-md-4 control-label">If already registered</label>
-    If already registered
-    <button type="button" routerLink="../login" class="btn btn-success custom">Log in</button>
+    <button type="button" class="btn btn-danger custom" routerLink="../login">Log in</button>
 
     <button type="button" routerLink="../addMeeting" class="btn btn-success custom">Dodaj meeting</button>
 

@@ -1,3 +1,7 @@
 .currentUser {
   text-align: right;
 }
+
+.alert-success {
+  margin-left: 80%;
+}
