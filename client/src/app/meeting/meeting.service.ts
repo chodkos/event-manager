@@ -8,12 +8,16 @@ export class MeetingService {
 
   constructor(private http: Http, private api: Api) { }
 
-  getAll(): Observable<any>{
+  getAllMeetings(): Observable<any>{
     return this.http.get(this.api.meetings)
-    // .map(response=> response.json())
+      .map(response=> response.json())
     // .flatMap(hotels => hotels)
     // .map(hotel => new Hotel(hotel))
     //
+  }
+
+  addNewMeeting(meeting: any): Observable<any>{
+    return this.http.post(this.api.addMeeting, meeting)
   }
 
 }

@@ -1,0 +1,18 @@
+nav ul {
+  list-style: none;
+  padding: 0;
+  /* margin: 50px 0;*/
+  text-align: center;
+  height: 50px;
+  background-color: red;
+}
+
+nav ul li {
+  display: inline;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.intro {
+
+}

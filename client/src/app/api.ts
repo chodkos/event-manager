@@ -5,5 +5,6 @@ export class Api {
   activeUser = `${this.baseUrl}/users/active`
   meetings = `${this.baseUrl}/meetings`
   userProfile = 'https://localhost:8080/api-v1/userProfile'
+  addMeeting = 'https://localhost:8080/api-v1/addMeeting'
 
 }

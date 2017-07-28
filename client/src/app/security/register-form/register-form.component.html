@@ -9,7 +9,7 @@
       <label class="col-md-4 control-label">Login</label>
       <div class="col-md-4">
         <input class="input" type="text" name="login" [(ngModel)]="userProfile.login" required>
-        <span class="help-block">Type ur login here</span>
+        <span class="help-block"></span>
       </div>
     </div>
 
@@ -18,7 +18,7 @@
       <label class="col-md-4 control-label">Password:</label>
       <div class="col-md-4">
         <input class="input" type="password" name="password" [(ngModel)]="userProfile.password" required>
-        <span class="help-block">Type ur password here</span>
+        <span class="help-block"></span>
       </div>
     </div>
 
@@ -26,8 +26,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label">Name</label>
       <div class="col-md-4">
-        <input class="input" type="text" name="name" [(ngModel)]="userProfile.userProfileDto.name" required>
-
+        <input class="input" type="text" name="name" [(ngModel)]="userProfile.userProfileDto.firstName" required> <!--name-->
       </div>
     </div>
 
@@ -35,7 +34,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label">Surname</label>
       <div class="col-md-4">
-        <input class="input" type="text" name="surname" [(ngModel)]="userProfile.userProfileDto.surname">
+        <input class="input" type="text" name="surname" [(ngModel)]="userProfile.userProfileDto.lastName"> <!--surname-->
 
       </div>
     </div>
@@ -45,7 +44,7 @@
       <label class="col-md-4 control-label">Decribe yourself</label>
       <div class="col-md-4">
         <textarea class="input" name="description" [(ngModel)]="userProfile.userProfileDto.description"></textarea>
-        <span class="help-block">help</span>
+        <span class="help-block"></span>
       </div>
     </div>
 
@@ -65,6 +64,8 @@
     <label class="col-md-4 control-label">If already registered</label>
     If already registered
     <button type="button" routerLink="../login" class="btn btn-success custom">Log in</button>
+
+    <button type="button" routerLink="../addMeeting" class="btn btn-success custom">Dodaj meeting</button>
 
 
 

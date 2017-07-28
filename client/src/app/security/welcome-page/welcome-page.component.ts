@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {SecurityService} from "../security.service";
 import {UsersService} from "../../users/users.service";
+import {User} from "../user";
 
 @Component({
   selector: 'app-welcome-page',
@@ -12,6 +13,7 @@ export class WelcomePageComponent implements OnInit {
   private currentUser;
 
   constructor(private securityService: SecurityService, private usersService: UsersService) { }
+
 
   ngOnInit() {
     this.usersService.getActiveUser().subscribe(response => {

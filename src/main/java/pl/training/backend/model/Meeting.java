@@ -3,9 +3,7 @@ package pl.training.backend.model;
 import lombok.Data;
 import pl.training.backend.security.entity.User;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import java.util.Date;
 import java.util.List;
@@ -16,8 +14,12 @@ import java.util.List;
 @Entity
 @Table(name = "meetings")
 @Data
-public class Meeting extends AbstractEntity {
+public class Meeting {
 
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)

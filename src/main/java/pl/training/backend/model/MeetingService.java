@@ -34,4 +34,6 @@ public class MeetingService {
         Page<Meeting> meetingPage = meetingRepository.findAll(new PageRequest(pageNumber, pageSize));
         return new ResultPage<>(meetingPage.getContent(), meetingPage.getNumber(), meetingPage.getTotalPages());
     }
+
+
 }

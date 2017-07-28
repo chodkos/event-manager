@@ -5,6 +5,7 @@ import {UsersListComponent} from './users/users-list/users-list.component';
 import {MeetingListComponent} from "./meeting/meeting-list/meeting-list.component";
 import {RegisterFormComponent} from "./security/register-form/register-form.component";
 import {WelcomePageComponent} from "./security/welcome-page/welcome-page.component";
+import {AddmeetingFormComponent} from "./meeting/addmeeting-form/addmeeting-form.component";
 
 const routesConfig: [Route] = [
   {
@@ -17,15 +18,15 @@ const routesConfig: [Route] = [
     path: 'welcomePage', component: WelcomePageComponent, canActivate: [SecurityGuard]
   },
   {
-    path: '**', redirectTo: 'welcomePage'
+    path: 'addMeeting', component: AddmeetingFormComponent, canActivate: [SecurityGuard]
   },
   {
-    path: '', canActivate: [SecurityGuard], children: [
-    {
-      path: 'meeting-list', component: MeetingListComponent
-    }
-  ]
-  }
+    path: 'meetings', component: MeetingListComponent, canActivate: [SecurityGuard]
+  },
+  {
+    path: '**', redirectTo: 'welcomePage'
+  },
+
 ]
 
 export const routerModule = RouterModule.forRoot(routesConfig)
