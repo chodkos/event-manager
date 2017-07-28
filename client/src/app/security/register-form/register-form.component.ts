@@ -16,8 +16,8 @@ export class RegisterFormComponent implements OnInit {
   private userProfile = {
     userProfileDto: {
       firstName: '',
-      lastName: '',
-      description: ''
+      lastName: ''
+
     },
     login: '',
     password: ''

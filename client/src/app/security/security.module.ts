@@ -5,6 +5,7 @@ import {FormsModule} from "@angular/forms";
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import {RouterModule} from "@angular/router";
+import { LogoutFormComponent } from './logout-form/logout-form.component';
 
 @NgModule({
   imports: [
@@ -15,10 +16,12 @@ import {RouterModule} from "@angular/router";
   declarations: [
     LoginFormComponent,
     RegisterFormComponent,
+    LogoutFormComponent,
   ],
   exports: [
     LoginFormComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    LogoutFormComponent
   ]
 })
 export class SecurityModule {

@@ -1,26 +1,27 @@
 <div class="addmeeting-form">
 
-  <h2>Dodaj nowe spotkanie</h2>
+  <h2 class="head">Dodaj nowe spotkanie</h2>
+  <br>
 
   <form #addmeetingForm="ngForm" novalidate="true" (ngSubmit)="addMeeting()">
 
     <div class="form-group">
-      <label class="col-md-4 control-label">Meeting name</label>
+      <label class="col-md-2 control-label">Meeting name</label>
       <input class="input" type="text" name="name" [(ngModel)]="meeting.name" required>
     </div>
     <div class="form-group">
-      <label class="col-md-4 control-label">Address</label>
+      <label class="col-md-2 control-label">Address</label>
       <input class="input" type="text" name="address" [(ngModel)]="meeting.address" required>
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label">Description</label>
+      <label class="col-md-2 control-label">Description</label>
       <input class="input" type="text" name="description" [(ngModel)]="meeting.description" required>
     </div>
 
 
     <div class="form-group">
-      <label class="col-md-4 control-label"></label>
+      <label class="col-md-2 control-label"></label>
       <div class="col-md-4">
         <button type="submit" class="btn btn-primary" [disabled]="addmeetingForm.invalid">Add meeting</button>
       </div>

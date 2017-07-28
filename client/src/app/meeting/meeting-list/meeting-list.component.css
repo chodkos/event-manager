@@ -1,8 +1,16 @@
 .book-card {
-  padding: 20px;
-  margin-bottom: 5px;
+margin-bottom: 5px;
 }
 
 .card-block{
-  width: 300px;
+
+  margin: 10px;
+ width: 250px;
+  height: 200px;
+  background-image: url("../../images/back.jpg");
+
+}
+
+.row {
+  margin: 20px;
 }
